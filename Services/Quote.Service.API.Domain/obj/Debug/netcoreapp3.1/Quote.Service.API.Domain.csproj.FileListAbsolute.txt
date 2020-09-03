@@ -1,0 +1,9 @@
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\bin\Debug\netcoreapp3.1\Quote.Service.API.Domain.deps.json
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\bin\Debug\netcoreapp3.1\Quote.Service.API.Domain.dll
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\bin\Debug\netcoreapp3.1\Quote.Service.API.Domain.pdb
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\obj\Debug\netcoreapp3.1\Quote.Service.API.Domain.AssemblyInfoInputs.cache
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\obj\Debug\netcoreapp3.1\Quote.Service.API.Domain.AssemblyInfo.cs
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\obj\Debug\netcoreapp3.1\Quote.Service.API.Domain.csproj.CoreCompileInputs.cache
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\obj\Debug\netcoreapp3.1\Quote.Service.API.Domain.dll
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\obj\Debug\netcoreapp3.1\Quote.Service.API.Domain.pdb
+D:\Thirumalai\MicroCredentialProgram\Pension.Plan.Quote.Management\Services\Quote.Service.API.Domain\obj\Debug\netcoreapp3.1\Quote.Service.API.Domain.csprojAssemblyReference.cache
