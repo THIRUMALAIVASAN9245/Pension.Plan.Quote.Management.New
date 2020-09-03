@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Service.API.Service\Interfaces\IQueryHandlers\IGetQuoteByIdRequest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Service.Interfaces.IQueryHandlers
+{
+    using MediatR;
+    using Quote.Service.API.Domain.Entities;
+    using System;
+
+    /// &lt;summary&gt;
+    /// IGetQuoteByIdRequest class
+    /// &lt;/summary&gt;
+    public class IGetQuoteByIdRequest : IRequest&lt;Quote&gt;
+    {
+        public Guid QuoteId { get; set; }
+
+        ///&lt;Summary&gt;
+        /// IGetQuoteByIdRequest constructor
+        ///&lt;/Summary&gt;  
+        ///&lt;param name=&quot;quoteId&quot;&gt;quoteId&lt;/param&gt;
+        public IGetQuoteByIdRequest(Guid quoteId)
+        {
+            this.QuoteId = quoteId;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,31,12,35,1],[12,36,12,40,1],[18,9,18,50,1],[19,9,19,10,1],[20,13,20,36,1],[21,9,21,10,1]]);
+    </script>
+  </body>
+</html>

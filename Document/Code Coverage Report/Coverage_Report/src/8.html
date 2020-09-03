@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Service.API.Data\Database\QuoteDbContext.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Data.Database
+{
+    using Microsoft.EntityFrameworkCore;
+    using Quote.Service.API.Data.Database.Configuration;
+    using Quote.Service.API.Domain.Entities;
+    using System;
+
+    ///&lt;Summary&gt;
+    /// Quote Db Context
+    ///&lt;/Summary&gt;
+    public class QuoteDbContext : DbContext
+    {
+        ///&lt;Summary&gt;
+        /// QuoteDbContext constructor
+        ///&lt;/Summary&gt;
+        public QuoteDbContext() { }
+
+        ///&lt;Summary&gt;
+        /// QuoteDbContext constructor with DbContextOptions
+        ///&lt;/Summary&gt;
+        public QuoteDbContext(DbContextOptions&lt;QuoteDbContext&gt; contextOptions) : base(contextOptions)
+        {
+            Database.EnsureCreated();
+        }
+
+        ///&lt;Summary&gt;
+        /// Quote Entitiy
+        ///&lt;/Summary&gt;
+        public DbSet&lt;Quote&gt; QuoteInfo { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new QuoteConfiguration());
+
+            modelBuilder.Entity&lt;Quote&gt;().HasData(
+                new Quote
+                {
+                    Id = Guid.NewGuid(),
+                    ClientName = &quot;ClientName&quot;,
+                    DateofBirth = new DateTime(1992, 09, 09),
+                    ClientSex = 1,
+                    Email = &quot;Test@test.com&quot;,
+                    MobileNumber = &quot;1234567880&quot;,
+                    QuoteDate = new DateTime(2020, 08, 08),
+                    RetirementAge = 62,
+                    InvestmentAmount = 100000,
+                    MaturityAmount = 1500,
+                    PensionPlan = 1
+                }
+            );
+        }
+    }
+}
+
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,32,1],[16,33,16,34,1],[16,35,16,36,1],[21,82,21,102,1],[22,9,22,10,1],[23,13,23,38,1],[24,9,24,10,1],[29,41,29,45,1],[29,46,29,50,1],[32,9,32,10,1],[33,13,33,71,1],[35,13,50,15,1],[51,9,51,10,1]]);
+    </script>
+  </body>
+</html>

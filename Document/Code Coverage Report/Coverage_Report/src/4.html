@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Servive.API\Models\ResquestModels\CreateQuoteModel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Models.ResquestModels
+{
+    using Quote.Service.API.Models.Enum;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    public class CreateQuoteModel
+    {
+        [Required]
+        public string ClientName { get; set; }
+
+        [Required]
+        public ClientSex ClientSex { get; set; }
+
+        [Required]
+        public DateTime DateofBirth { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string MobileNumber { get; set; }
+
+        [Required]
+        public decimal InvestmentAmount { get; set; }
+
+        [Required]
+        public int RetirementAge { get; set; }
+
+        [Required]
+        public PensionPlan PensionPlan { get; set; }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,36,10,40,1],[10,41,10,45,1],[13,38,13,42,1],[13,43,13,47,1],[16,39,16,43,1],[16,44,16,48,1],[19,31,19,35,1],[19,36,19,40,1],[22,38,22,42,1],[22,43,22,47,1],[25,43,25,47,1],[25,48,25,52,1],[28,36,28,40,1],[28,41,28,45,1],[31,42,31,46,1],[31,47,31,51,1]]);
+    </script>
+  </body>
+</html>

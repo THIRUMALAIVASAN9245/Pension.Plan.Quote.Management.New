@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Service.API.Data\Repository\Repository.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Data.Repository
+{
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
+    using Quote.Service.API.Data.Database;
+    using System;
+    using System.Linq;
+
+    public class Repository : IRepository
+    {
+        private readonly QuoteDbContext quoteDbContext;
+
+        public Repository(QuoteDbContext quoteDbContext)
+        {
+            this.quoteDbContext = quoteDbContext;
+        }
+
+        public IQueryable&lt;T&gt; Query&lt;T&gt;() where T : class
+        {
+            return quoteDbContext.Set&lt;T&gt;().AsQueryable();
+        }
+
+        public T Get&lt;T&gt;(Guid key) where T : class
+        {
+            return this.quoteDbContext.Set&lt;T&gt;().Find(key);
+        }
+
+        public T Save&lt;T&gt;(T entity) where T : class
+        {
+            var entityResult = quoteDbContext.Set&lt;T&gt;().Add(entity).Entity;
+            quoteDbContext.SaveChanges();
+            return entityResult;
+        }
+
+        public T Update&lt;T&gt;(T entity) where T : class
+        {
+            EntityEntry&lt;T&gt; entityEntry = quoteDbContext.Entry(entity);
+            quoteDbContext.Set&lt;T&gt;().Attach(entity);
+            entityEntry.State = EntityState.Modified;
+            quoteDbContext.SaveChanges();
+            return entity;
+        }
+
+        public void Delete&lt;T&gt;(T entity) where T : class
+        {
+            quoteDbContext.Set&lt;T&gt;().Remove(entity);
+            quoteDbContext.SaveChanges();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,9,13,57,1],[14,9,14,10,1],[15,13,15,50,1],[16,9,16,10,1],[19,9,19,10,1],[20,13,20,58,1],[21,9,21,10,1],[24,9,24,10,1],[25,13,25,59,1],[26,9,26,10,1],[29,9,29,10,1],[30,13,30,75,1],[31,13,31,42,1],[32,13,32,33,1],[33,9,33,10,1],[36,9,36,10,1],[37,13,37,71,1],[38,13,38,52,1],[39,13,39,54,1],[40,13,40,42,1],[41,13,41,27,1],[42,9,42,10,1],[45,9,45,10,1],[46,13,46,52,1],[47,13,47,42,1],[48,9,48,10,1]]);
+    </script>
+  </body>
+</html>

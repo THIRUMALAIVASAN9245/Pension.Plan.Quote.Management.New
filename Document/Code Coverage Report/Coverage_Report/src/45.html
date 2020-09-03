@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Tests\Quote.Service.API.Test\Infrastructure\AutoMapper\MappingProfileTest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Test.Infrastructure.AutoMapper
+{
+    using FluentAssertions;
+    using global::AutoMapper;
+    using NUnit.Framework;
+    using Quote.Service.API.Domain.Entities;
+    using Quote.Service.API.Infrastructure.AutoMapper;
+    using Quote.Service.API.Models.Enum;
+    using Quote.Service.API.Models.ResponseModels;
+    using Quote.Service.API.Models.ResquestModels;
+    using System;
+
+    public class MappingProfileTests
+    {
+        private CreateQuoteModel createQuoteModel;
+        private UpdateQuoteModel updateQuoteModel;
+        private Quote quoteEntity;
+        private IMapper _mapper;
+
+        [SetUp]
+        public void Setup()
+        {
+            var mockMapper = new MapperConfiguration(cfg =&gt;
+            {
+                cfg.AddProfile(new MappingProfile());
+            });
+            _mapper = mockMapper.CreateMapper();
+
+            createQuoteModel = new CreateQuoteModel
+            {
+                ClientName = &quot;ClientName 1&quot;,
+                DateofBirth = new DateTime(1992, 09, 09),
+                ClientSex = ClientSex.Male,
+                Email = &quot;Test@test.com&quot;,
+                MobileNumber = &quot;1234567880&quot;,
+                RetirementAge = 62,
+                InvestmentAmount = 300000,
+                PensionPlan = PensionPlan.PensionPlatinum
+            };
+            updateQuoteModel = new UpdateQuoteModel
+            {
+                Id = Guid.Parse(&quot;9f35b48d-cb87-4783-bfdb-21e36012930a&quot;),
+                ClientName = &quot;ClientName 1&quot;,
+                DateofBirth = new DateTime(1992, 09, 09),
+                ClientSex = ClientSex.Male,
+                Email = &quot;Test@test.com&quot;,
+                MobileNumber = &quot;1234567880&quot;,
+                QuoteDate = new DateTime(2020, 08, 08),
+                RetirementAge = 62,
+                InvestmentAmount = 100000,
+                PensionPlan = PensionPlan.PensionSilver
+            };
+
+            quoteEntity = new Quote
+            {
+                Id = Guid.NewGuid(),
+                ClientName = &quot;ClientName 2&quot;,
+                DateofBirth = new DateTime(1992, 09, 09),
+                ClientSex = 1,
+                Email = &quot;Test@test.com&quot;,
+                MobileNumber = &quot;1234567880&quot;,
+                QuoteDate = new DateTime(2020, 08, 08),
+                RetirementAge = 62,
+                InvestmentAmount = 100000,
+                MaturityAmount = 1500,
+                PensionPlan = 1
+            };
+        }
+
+        [Test]
+        public void Map_Quote_CreateQuoteModel_ShouldHaveValidConfig()
+        {
+            var configuration = new MapperConfiguration(cfg =&gt;
+               cfg.CreateMap&lt;Quote, CreateQuoteModel&gt;());
+
+            configuration.AssertConfigurationIsValid();
+        }
+
+        [Test]
+        public void Map_Quote_UpdateQuoteModel_ShouldHaveValidConfig()
+        {
+            var configuration = new MapperConfiguration(cfg =&gt;
+                cfg.CreateMap&lt;Quote, UpdateQuoteModel&gt;());
+
+            configuration.AssertConfigurationIsValid();
+        }
+
+        [Test]
+        public void Map_ResponseQuoteModel_Quote_ShouldHaveValidConfig()
+        {
+            var configuration = new MapperConfiguration(cfg =&gt;
+                cfg.CreateMap&lt;Quote, ResponseQuoteModel&gt;());
+
+            configuration.AssertConfigurationIsValid();
+        }
+
+        [Test]
+        public void Map_Quote_Quote_ShouldHaveValidConfig()
+        {
+            var configuration = new MapperConfiguration(cfg =&gt;
+                cfg.CreateMap&lt;Quote, Quote&gt;());
+
+            configuration.AssertConfigurationIsValid();
+        }
+
+        [Test]
+        public void Map_CreateQuoteModel_Quote()
+        {
+            var quote = _mapper.Map&lt;Quote&gt;(createQuoteModel);
+
+            quote.ClientName.Should().Be(createQuoteModel.ClientName);
+            quote.ClientSex.Should().Be((int)createQuoteModel.ClientSex);
+            quote.DateofBirth.Should().Be(createQuoteModel.DateofBirth);
+            quote.Email.Should().Be(createQuoteModel.Email);
+            quote.MobileNumber.Should().Be(createQuoteModel.MobileNumber);
+            quote.InvestmentAmount.Should().Be(createQuoteModel.InvestmentAmount);
+            quote.PensionPlan.Should().Be((int)createQuoteModel.PensionPlan);
+            quote.RetirementAge.Should().Be(createQuoteModel.RetirementAge);
+        }
+
+        [Test]
+        public void Map_UpdateQuoteModel_Quote()
+        {
+            var quote = _mapper.Map&lt;Quote&gt;(updateQuoteModel);
+
+            quote.Id.Should().Be(updateQuoteModel.Id);
+            quote.ClientName.Should().Be(updateQuoteModel.ClientName);
+            quote.ClientSex.Should().Be((int)updateQuoteModel.ClientSex);
+            quote.DateofBirth.Should().Be(updateQuoteModel.DateofBirth);
+            quote.Email.Should().Be(updateQuoteModel.Email);
+            quote.MobileNumber.Should().Be(updateQuoteModel.MobileNumber);
+            quote.InvestmentAmount.Should().Be(updateQuoteModel.InvestmentAmount);
+            quote.PensionPlan.Should().Be((int)updateQuoteModel.PensionPlan);
+            quote.RetirementAge.Should().Be(updateQuoteModel.RetirementAge);
+        }
+
+        [Test]
+        public void Map_Quote_ResponseQuoteModel()
+        {
+            var responseQuoteModel = _mapper.Map&lt;ResponseQuoteModel&gt;(quoteEntity);
+
+            responseQuoteModel.Id.Should().Be(quoteEntity.Id);
+            responseQuoteModel.ClientName.Should().Be(quoteEntity.ClientName);
+            responseQuoteModel.ClientSex.Should().Be(quoteEntity.ClientSex);
+            responseQuoteModel.DateofBirth.Should().Be(quoteEntity.DateofBirth);
+            responseQuoteModel.Email.Should().Be(quoteEntity.Email);
+            responseQuoteModel.QuoteDate.Should().Be(quoteEntity.QuoteDate);
+            responseQuoteModel.MobileNumber.Should().Be(quoteEntity.MobileNumber);
+            responseQuoteModel.InvestmentAmount.Should().Be(quoteEntity.InvestmentAmount);
+            responseQuoteModel.PensionPlan.Should().Be(quoteEntity.PensionPlan);
+            responseQuoteModel.RetirementAge.Should().Be(quoteEntity.RetirementAge);
+            responseQuoteModel.MaturityAmount.Should().Be(quoteEntity.MaturityAmount);
+        }
+
+        [Test]
+        public void Map_CreateQuoteModel_Quote_PensionSilver()
+        {
+            createQuoteModel.PensionPlan = PensionPlan.PensionSilver;
+            var quote = _mapper.Map&lt;Quote&gt;(createQuoteModel);
+
+            quote.PensionPlan.Should().Be((int)createQuoteModel.PensionPlan);
+        }
+
+        [Test]
+        public void Map_CreateQuoteModel_Quote_PensionGold()
+        {
+            createQuoteModel.PensionPlan = PensionPlan.PensionGold;
+            var quote = _mapper.Map&lt;Quote&gt;(createQuoteModel);
+
+            quote.PensionPlan.Should().Be((int)createQuoteModel.PensionPlan);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,10,1],[23,13,24,13,1],[24,13,24,14,1],[24,14,25,17,1],[25,17,25,54,1],[25,54,26,13,1],[26,13,26,14,1],[26,14,26,16,1],[23,13,26,16,1],[27,13,27,49,1],[29,13,39,15,1],[40,13,52,15,1],[54,13,67,15,1],[68,9,68,10,1],[72,9,72,10,1],[73,13,74,16,1],[74,16,74,56,1],[74,56,74,58,1],[73,13,74,58,1],[76,13,76,56,1],[77,9,77,10,1],[81,9,81,10,1],[82,13,83,17,1],[83,17,83,57,1],[83,57,83,59,1],[82,13,83,59,1],[85,13,85,56,1],[86,9,86,10,1],[90,9,90,10,1],[91,13,92,17,1],[92,17,92,59,1],[92,59,92,61,1],[91,13,92,61,1],[94,13,94,56,1],[95,9,95,10,1],[99,9,99,10,1],[100,13,101,17,1],[101,17,101,46,1],[101,46,101,48,1],[100,13,101,48,1],[103,13,103,56,1],[104,9,104,10,1],[108,9,108,10,1],[109,13,109,62,1],[111,13,111,71,1],[112,13,112,74,1],[113,13,113,73,1],[114,13,114,61,1],[115,13,115,75,1],[116,13,116,83,1],[117,13,117,78,1],[118,13,118,77,1],[119,9,119,10,1],[123,9,123,10,1],[124,13,124,62,1],[126,13,126,55,1],[127,13,127,71,1],[128,13,128,74,1],[129,13,129,73,1],[130,13,130,61,1],[131,13,131,75,1],[132,13,132,83,1],[133,13,133,78,1],[134,13,134,77,1],[135,9,135,10,1],[139,9,139,10,1],[140,13,140,83,1],[142,13,142,63,1],[143,13,143,79,1],[144,13,144,77,1],[145,13,145,81,1],[146,13,146,69,1],[147,13,147,77,1],[148,13,148,83,1],[149,13,149,91,1],[150,13,150,81,1],[151,13,151,85,1],[152,13,152,87,1],[153,9,153,10,1],[157,9,157,10,1],[158,13,158,70,1],[159,13,159,62,1],[161,13,161,78,1],[162,9,162,10,1],[166,9,166,10,1],[167,13,167,68,1],[168,13,168,62,1],[170,13,170,78,1],[171,9,171,10,1]]);
+    </script>
+  </body>
+</html>

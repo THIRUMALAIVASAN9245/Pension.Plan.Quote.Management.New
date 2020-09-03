@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Service.API.Service\Handlers\QueryHandlers\GetQuoteHandler.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Service.Handlers.QueryHandlers
+{
+    using MediatR;
+    using Quote.Service.API.Data.Repository;
+    using Quote.Service.API.Domain.Entities;
+    using Quote.Service.API.Service.Interfaces.IQueryHandlers;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    /// &lt;summary&gt;
+    /// GetQuoteHandler class
+    /// &lt;/summary&gt;
+    public class GetQuoteHandler : IRequestHandler&lt;IGetQuoteRequest, List&lt;Quote&gt;&gt;
+    {
+        private readonly IRepository repository;
+
+        /// &lt;summary&gt;
+        /// GetQuoteHandler constructor
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;repository&quot;&gt;IRepository&lt;/param&gt;
+        public GetQuoteHandler(IRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        /// &lt;summary&gt;
+        /// Handle method to get all quote
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;request&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;cancellationToken&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public async Task&lt;List&lt;Quote&gt;&gt; Handle(IGetQuoteRequest request, CancellationToken cancellationToken)
+        {
+            var quote = repository.Query&lt;Quote&gt;()
+                .OrderBy(x =&gt; x.QuoteDate)
+                .ToList();
+
+            return await Task.FromResult(quote);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[23,9,23,55,1],[24,9,24,10,1],[25,13,25,42,1],[26,9,26,10,1],[35,9,35,10,1],[36,13,38,27,1],[40,13,40,49,1],[41,9,41,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Service.API.Service\Interfaces\ICommandHandlers\IDeleteQuoteRequest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Service.Interfaces.ICommandHandlers
+{
+    using MediatR;
+    using Quote.Service.API.Domain.Entities;
+
+    /// &lt;summary&gt;
+    /// IDeleteQuoteRequest class
+    /// &lt;/summary&gt;
+    public class IDeleteQuoteRequest : IRequest&lt;Quote&gt;
+    {
+        public Quote Quote { get; set; }
+
+        ///&lt;Summary&gt;
+        /// IDeleteQuoteRequest constructor
+        ///&lt;/Summary&gt;  
+        ///&lt;param name=&quot;quote&quot;&gt;quote&lt;/param&gt;
+        public IDeleteQuoteRequest(Quote quote)
+        {
+            this.Quote = quote;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,30,11,34,1],[11,35,11,39,1],[17,9,17,48,1],[18,9,18,10,1],[19,13,19,32,1],[20,9,20,10,1]]);
+    </script>
+  </body>
+</html>

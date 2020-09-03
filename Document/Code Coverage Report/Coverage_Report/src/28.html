@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Tests\Quote.Service.API.Service.Test\UpdateQuoteHandlerTest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Service.Test
+{
+    using Moq;
+    using NUnit.Framework;
+    using Quote.Service.API.Data.Repository;
+    using Quote.Service.API.Domain.Entities;
+    using Quote.Service.API.Service.Handlers.CommandHandlers;
+    using Quote.Service.API.Service.Interfaces.ICommandHandlers;
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    public class UpdateQuoteHandlerTest
+    {
+        private IUpdateQuoteRequest request;
+
+        private UpdateQuoteHandler underTest;
+
+        private Mock&lt;IRepository&gt; repository;
+
+        [SetUp]
+        public void Setup()
+        {
+            // Arrange 
+            var quoteModel = new Quote
+            {
+                Id = Guid.NewGuid(),
+                ClientName = &quot;ClientName 1&quot;,
+                DateofBirth = new DateTime(1992, 09, 09),
+                ClientSex = 1,
+                Email = &quot;Test@test.com&quot;,
+                MobileNumber = &quot;1234567880&quot;,
+                QuoteDate = new DateTime(2020, 08, 08),
+                RetirementAge = 62,
+                InvestmentAmount = 100000,
+                MaturityAmount = 1500,
+                PensionPlan = 1
+            };
+            repository = new Mock&lt;IRepository&gt;();
+            repository.Setup(m =&gt; m.Save&lt;Quote&gt;(It.IsAny&lt;Quote&gt;())).Returns(quoteModel);
+            underTest = new UpdateQuoteHandler(repository.Object);
+            request = new IUpdateQuoteRequest(quoteModel);
+        }
+
+        [Test]
+        public async Task HandleSuccessAsync()
+        {
+            // Act
+            CancellationToken cancellationToken;
+            var result = await underTest.Handle(request, cancellationToken);
+
+            // Assert  
+            Assert.NotNull(result);
+            Assert.AreEqual(&quot;ClientName 1&quot;, result.ClientName);
+            Assert.AreEqual(new DateTime(1992, 09, 09), result.DateofBirth);
+            Assert.AreEqual(1, result.ClientSex);
+            Assert.AreEqual(&quot;Test@test.com&quot;, result.Email);
+            Assert.AreEqual(&quot;1234567880&quot;, result.MobileNumber);
+            Assert.AreEqual(new DateTime(2020, 08, 08), result.QuoteDate);
+            Assert.AreEqual(62, result.RetirementAge);
+            Assert.AreEqual(100000, result.InvestmentAmount);
+            Assert.AreEqual(1500, result.MaturityAmount);
+            Assert.AreEqual(1, result.PensionPlan);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[23,9,23,10,1],[25,13,38,15,1],[39,13,39,50,1],[40,13,40,89,1],[41,13,41,67,1],[42,13,42,59,1],[43,9,43,10,1],[47,9,47,10,1],[50,13,50,77,1],[53,13,53,36,1],[54,13,54,64,1],[55,13,55,77,1],[56,13,56,50,1],[57,13,57,60,1],[58,13,58,64,1],[59,13,59,75,1],[60,13,60,55,1],[61,13,61,62,1],[62,13,62,58,1],[63,13,63,52,1],[64,9,64,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Servive.API\Models\ResquestModels\UpdateQuoteModel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Models.ResquestModels
+{
+    using Quote.Service.API.Models.Enum;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    public class UpdateQuoteModel
+    {
+        [Required]
+        public Guid Id { get; set; }
+
+        [Required]
+        public string ClientName { get; set; }
+
+        [Required]
+        public ClientSex ClientSex { get; set; }
+
+        [Required]
+        public DateTime DateofBirth { get; set; }
+
+        [Required]
+        public DateTime QuoteDate { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string MobileNumber { get; set; }
+
+        [Required]
+        public decimal InvestmentAmount { get; set; }
+
+        [Required]
+        public int RetirementAge { get; set; }
+
+        [Required]
+        public PensionPlan PensionPlan { get; set; }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,26,10,30,1],[10,31,10,35,1],[13,36,13,40,1],[13,41,13,45,1],[16,38,16,42,1],[16,43,16,47,1],[19,39,19,43,1],[19,44,19,48,1],[22,37,22,41,1],[22,42,22,46,1],[25,31,25,35,1],[25,36,25,40,1],[28,38,28,42,1],[28,43,28,47,1],[31,43,31,47,1],[31,48,31,52,1],[34,36,34,40,1],[34,41,34,45,1],[37,42,37,46,1],[37,47,37,51,1]]);
+    </script>
+  </body>
+</html>

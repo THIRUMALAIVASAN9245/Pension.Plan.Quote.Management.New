@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Work\FSD\Project\Pension Plan Quote Management\Services\Quote.Service.API.Data\Database\Configuration\QuoteConfiguration.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace Quote.Service.API.Data.Database.Configuration
+{
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Quote.Service.API.Domain.Entities;
+
+    public class QuoteConfiguration : IEntityTypeConfiguration&lt;Quote&gt;
+    {
+        public void Configure(EntityTypeBuilder&lt;Quote&gt; builder)
+        {
+            builder.HasKey(s =&gt; new { s.Id });
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,9,10,10,1],[11,13,11,47,1],[12,9,12,10,1]]);
+    </script>
+  </body>
+</html>
